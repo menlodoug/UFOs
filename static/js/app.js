@@ -10,7 +10,7 @@ function buildTable(data) {
     // Next, loop through each object in the data
     // and append a row and cells for each value in the row
     data.forEach((dataRow) => {
-      // Append a row to the table body
+      // Append a row to the table bodyfs
       let row = tbody.append("tr");
       // Loop through each field in the dataRow and add
       // each value as a table cell (td)
@@ -23,15 +23,19 @@ function buildTable(data) {
   }
 
   function handleClick() {
-    // Grab the datetime value from the filter
-    let date = d3.select("#datetime").property("value");
+    // Grab the values from the filters
+    
     let filteredData = tableData;
-    // Check to see if a date was entered and filter the
-    // data using that date.
-    if (date) {
-      // Apply `filter` to the table data to only keep the
-      // rows where the `datetime` value matches the filter value
-      filteredData = filteredData.filter(row => row.datetime === date);
+    // Enter the desired values for the various filters.
+    //
+     { let date = d3.select("#datetime").property("value"); if (date) {filteredData = filteredData.filter(row => row.datetime === date);} 
+     let state = d3.select("#state").property("value"); if (state) {filteredData = filteredData.filter(row => row.state === state);} 
+    let country = d3.select("#country").property("value"); if (country) {filteredData = filteredData.filter(row => row.country === country);}
+    let shape = d3.select("#shape").property("value"); if (shape) {filteredData = filteredData.filter(row => row.shape === shape);}
+    let town = d3.select("#city").property("value"); if (town) {filteredData = filteredData.filter(row => row.city === town);}
+      // Apply `filter` to the table data for each variable to keep the
+      // rows where the values match the filtered values
+      
     }
     // Rebuild the table using the filtered data
     // @NOTE: If no date was entered, then filteredData will
